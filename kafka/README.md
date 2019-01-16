@@ -15,8 +15,8 @@ Your goal is to complete our implementation.
 
 In the end-state the system should consist of at least the following components:
 
-- **Message Broker** - The Kafka message broker that can be used for communication between components.
-- **Producer** - Responsible for periodically sending URLs on the message bus.
+- **Message Broker** - The Kafka message broker that can be used for communication between components. *Note: this component uses off-the-shelve Docker images from docker hub which should be sufficient.*
+- **Producer** - Responsible for periodically sending URLs on the message bus. *Note: this implementation is already complete.*
 - **Consumer** - Consumes URLs from the producer and should use the Clockworks Meter Reading API to find out whether or not the image at the URL is a gas, water, or electric meter. *Note: this component is only partially implemented.*
 - **Frontend** - Web-based frontend that shows aggregated statistics of the processed URLs (number of gas, water, or electric meters detected). *Note: this component is not yet implemented.*
 
@@ -24,7 +24,7 @@ In the end-state the system should consist of at least the following components:
 - The consumer should be written in Python
 - The web-based frontend can be implemented in any technology of your choosing as long as it is accessible using a browser after firing up the Docker containers
 - Styling of the frontend is not important
-- If you are stuck on something do not hesistate to reach out!
+- If you are stuck on something do not hesitate to reach out!
 
 ## Getting Started
 Execute the following command to get started:
