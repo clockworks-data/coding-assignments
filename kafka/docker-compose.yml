@@ -18,9 +18,13 @@ services:
       - /var/run/docker.sock:/var/run/docker.sock
   producer:
     build: producer
+    environment:
+      - PYTHONUNBUFFERED=1
     depends_on:
       - kafka
   consumer:
     build: consumer
+    environment:
+      - PYTHONUNBUFFERED=1
     depends_on:
       - kafka
