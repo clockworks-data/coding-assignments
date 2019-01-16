@@ -1,0 +1,142 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Clockworks API for reading the meter",
+    "version" : "0.9.0",
+    "title" : "Clockworks meterreading API"
+  },
+  "host" : "api-stedin.clockworks.co",
+  "paths" : {
+    "/full_meter" : {
+      "post" : {
+        "tags" : [ "meter" ],
+        "summary" : "upload an image to be read",
+        "operationId" : "uploadMeter",
+        "consumes" : [ "multipart/form-data" ],
+        "produces" : [ "application/json" ],
+        "parameters" : [ {
+          "name" : "image",
+          "in" : "formData",
+          "description" : "Image to upload",
+          "required" : true,
+          "type" : "file"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "succesful operation",
+            "schema" : {
+              "$ref" : "#/definitions/ModelMeter"
+            }
+          }
+        }
+      }
+    }
+  },
+  "definitions" : {
+    "Barcode" : {
+      "properties" : {
+        "bbox" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "confidence" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Display" : {
+      "properties" : {
+        "bbox" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "confidence" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "uncertain" : {
+          "type" : "boolean"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "Meternummer" : {
+      "properties" : {
+        "bbox" : {
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          }
+        },
+        "confidence" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "ModelMeter" : {
+      "properties" : {
+        "bad_photo" : {
+          "type" : "boolean"
+        },
+        "barcode" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Barcode"
+          }
+        },
+        "display" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Display"
+          }
+        },
+        "messages" : {
+          "type" : "array",
+          "items" : {
+            "type" : "string"
+          }
+        },
+        "metercategory" : {
+          "type" : "string"
+        },
+        "metercategory_confidence" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "metercode" : {
+          "type" : "string"
+        },
+        "metercode_confidence" : {
+          "type" : "number",
+          "format" : "double"
+        },
+        "meternummer" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Meternummer"
+          }
+        },
+        "warnings" : {
+          "type" : "boolean"
+        }
+      }
+    }
+  }
+}
