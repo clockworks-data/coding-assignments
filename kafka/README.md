@@ -4,11 +4,10 @@ You are given a partially implemented system which, given a list of images, shou
 - Gas
 - Water
 - Electric
-- Unknown
 
 The images are given as a list of URLs. To categorize these images the Clockworks Meter Reading API is to be used (see [Clockworks Meter Reading API](clockworks-meter-reading-api) for instructions).
 
-The aggregated statistics (total number of gas, water, electric, or unknown meters detected) should be reported in a web-based interface.
+The aggregated statistics (total number of gas, water, or electric meters detected) should be reported in a web-based interface.
 
 We have provided a starting point with some of the functionality already implemented using Docker containers. These containers can be deployed locally using docker-compose (see [Getting Started](getting-started])).
 
@@ -18,8 +17,8 @@ In the end-state the system should consist of at least the following components:
 
 - **Message Broker** - The Kafka message broker that can be used for communication between components.
 - **Producer** - Responsible for periodically sending URLs on the message bus.
-- **Consumer** - Consumes URLs from the producer and should use the Clockworks Meter Reading API to find out whether or not the image at the URL is a gas, water, electric, or unknown meter. *Note: this component is only partially implemented.*
-- **Frontend** - Web-based frontend that shows aggregated statistics of the processed URLs (number of gas, water, electric, or unknown meters detected). *Note: this component is not yet implemented.*
+- **Consumer** - Consumes URLs from the producer and should use the Clockworks Meter Reading API to find out whether or not the image at the URL is a gas, water, or electric meter. *Note: this component is only partially implemented.*
+- **Frontend** - Web-based frontend that shows aggregated statistics of the processed URLs (number of gas, water, or electric meters detected). *Note: this component is not yet implemented.*
 
 ## Notes
 - The consumer should be written in Python
